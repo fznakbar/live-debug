@@ -1,6 +1,9 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Book = sequelize.init('Book', {
+  let Model = sequelize.Sequelize.Model
+  class Book extends Model{} 
+  Book.init({
+  // const Book = sequelize.init('Book', {
     isbn: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -76,7 +79,7 @@ module.exports = (sequelize, DataTypes) => {
         min: 0
       }
     },
-  }, {});
+  }, {sequelize});
   Book.associate = function (models) {
     // associations can be defined here
     Book.hasMany(models.Loan)

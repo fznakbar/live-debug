@@ -13,14 +13,14 @@ class LoanController {
   static find(req, res, next) {
     Loan.findAll()
       .then(function(loans) {
-        res.json(loans);
+        res.status(200).json(loans);
       })
       .catch(next);
   }
 
   static returnALoan(req, res, next) {
     const { id } = req.params;
-    Loan.findOne({ id })
+    Loan.findOne({ where : {id : id} })
       .then(function(loan) {
         if (!loan) {
           next({ code: 404, resource: 'Loan' });

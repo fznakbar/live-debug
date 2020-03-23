@@ -1,10 +1,10 @@
-module.exports = function(req, res, next) {
+module.exports = function(err, req, res, next) {
   const stringifiedErr = JSON.stringify(err);
   if (err.code === 404) {
     res.status(err.code).json({
       message: err.resource + ' not found',
     });
-  } else if (stringifiedErr.indexOf('SequelizeValidationError') === -1) {
+  } else if (stringifiedErr.indexOf('SequelizeValidationError') !== -1) {
     const validateErrors = err.errors;
     const errors = [];
 
@@ -23,7 +23,7 @@ module.exports = function(req, res, next) {
 
     res.status(400).json({ errors });
   } else {
-    console.log(err);
+    console.log(err + 'ERROR BARUUUUU');
 
     res.status(500).json({
       message: 'Internal server error, check the console',
