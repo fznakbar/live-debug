@@ -23,7 +23,7 @@ module.exports = function(err, req, res, next) {
 
     res.status(400).json({ errors });
   } else {
-    console.log(err + 'ERROR BARUUUUU');
+    console.log(err);
 
     res.status(500).json({
       message: 'Internal server error, check the console',

@@ -93,9 +93,7 @@ export default {
     }
   },
   methods: {
-    onSubmit () {
-      // console.log(data)
-    },
+    onSubmit () {},
     fetchCountries () {
       this.$store.dispatch('fetchCountries')
     },
